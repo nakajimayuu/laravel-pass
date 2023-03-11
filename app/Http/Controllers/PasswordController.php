@@ -23,6 +23,11 @@ class PasswordController extends Controller
         return view('passwords.create');
     }
 
+    public function entry()
+    {
+        return view('passwords.entry');
+    }
+
     /**
      * Store a newly created resource in storage.
      */
