@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,8 @@ use App\Http\Controllers\PasswordController;
 Route::get('/', function () {
     return view('home');
 });
+
+Route::get('/entry', [Controllers\PasswordController::class, 'entry'])->name('entry');
 
 Route::resource('passwords', PasswordController::class);
 
