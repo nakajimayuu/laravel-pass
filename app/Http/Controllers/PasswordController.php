@@ -12,7 +12,7 @@ class PasswordController extends Controller
      */
     public function index()
     {
-        return view('passwords.index');
+        return view('password.index');
     }
 
     /**
@@ -20,12 +20,12 @@ class PasswordController extends Controller
      */
     public function create()
     {
-        return view('passwords.create');
+        return view('password.create');
     }
 
     public function entry()
     {
-        return view('passwords.entry');
+        return view('password.entry');
     }
 
     /**
@@ -33,7 +33,7 @@ class PasswordController extends Controller
      */
     public function store(Request $request)
     {
-        // 
+        //
     }
 
     /**
@@ -41,7 +41,7 @@ class PasswordController extends Controller
      */
     public function show(string $id)
     {
-        return view('passwords.show');
+        return view('password.show');
     }
 
     /**
@@ -49,7 +49,7 @@ class PasswordController extends Controller
      */
     public function edit(string $id)
     {
-        return view('passwords.edit');
+        return view('password.edit');
     }
 
     /**

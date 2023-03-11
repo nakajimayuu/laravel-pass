@@ -10,16 +10,16 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">検索</a>
+          <a class="nav-link" href="{{ route('home') }}">検索</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">生成</a>
+          <a class="nav-link" href="{{ route('password.create') }}">生成</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">登録</a>
+          <a class="nav-link" href="{{ route('password.entry') }}">登録</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">ログイン</a>
+          <a class="nav-link" href="{{ route('login') }}">ログイン</a>
         </li>
       </ul>
       <form class="d-flex">
