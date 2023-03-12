@@ -1,3 +1,7 @@
+@extends('layouts.guest')
+
+@section('content')
+
 <div class="container">
   <form>
     <div class="mb-3">
@@ -23,3 +27,5 @@
     <button type="submit" class="btn btn-primary">登録する</button>
   </form>
 </div>
+
+@endsection

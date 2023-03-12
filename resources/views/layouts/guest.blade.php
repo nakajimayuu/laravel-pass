@@ -15,8 +15,11 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
+        <x-nav />
+        
         <div class="font-sans text-gray-900 antialiased">
-            {{ $slot }}
+            @yield('content')
         </div>
+        
     </body>
 </html>
