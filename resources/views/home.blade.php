@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.guest')
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Laravel2</title>
-  @vite('resources/css/style.scss')
-</head>
-
-<body>
-  
-  <x-nav />
+@section('content')
 
   <div class="container">
 		<table class="table table-borderd">
@@ -43,7 +33,4 @@
 		</table>
 	</div>
 
-  @vite('resources/js/app.js')
-</body>
-
-</html>
+@endsection
