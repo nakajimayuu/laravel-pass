@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Password;
 
 class PasswordController extends Controller
 {
@@ -23,7 +24,7 @@ class PasswordController extends Controller
         return view('password.create');
     }
 
-    public function entry()
+    public function entry(Request $request)
     {
         return view('password.entry');
     }
@@ -33,7 +34,15 @@ class PasswordController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $password = new Password();
+        $password->title = $request->input('title');
+        $password->account = $request->input('account');
+        $password->password = $request->input('password');
+        $password->email = $request->input('email');
+        $password->memo = $request->input('memo');
+        $password->save();
+
+        return to_route('password.store');
     }
 
     /**
