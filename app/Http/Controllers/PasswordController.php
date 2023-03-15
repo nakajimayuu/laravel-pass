@@ -5,75 +5,86 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Password;
+use Illuminate\Support\Facades\DB;
 
 class PasswordController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        return view('password.index');
-    }
+	/**
+	 * Display a listing of the resource.
+	 */
+	public function index()
+	{
+		return view('password.index');
+	}
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('password.create');
-    }
+	/**
+	 * Show the form for creating a new resource.
+	 */
+	public function create()
+	{
+		return view('password.create');
+	}
 
-    public function entry(Request $request)
-    {
-        return view('password.entry');
-    }
+	public function entry(Request $request)
+	{
+		return view('password.entry');
+	}
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        $password = new Password();
-        $password->title = $request->input('title');
-        $password->account = $request->input('account');
-        $password->password = $request->input('password');
-        $password->email = $request->input('email');
-        $password->memo = $request->input('memo');
-        $password->save();
+	/**
+	 * Store a newly created resource in storage.
+	 */
+	public function store(Request $request)
+	{
+		// dd($request->all());
+		DB::beginTransaction();
 
-        return to_route('password.store');
-    }
+		try {
+			$password = new Password();
+			$password->title    = $request->input('title');
+			$password->account  = $request->input('account');
+			$password->password = $request->input('password');
+			$password->email    = $request->input('email');
+			$password->memo     = $request->input('memo');
+			$password->save();
+			DB::commit();
+		} catch (\Throwable $e) {
+			// dd($e);
+			DB::rollback();
+			// return Redirect::back()->with('flash_success', 'エラーが起こったので、登録していません');
+		}
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        return view('password.show');
-    }
+		return to_route('password.entry');
+	}
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        return view('password.edit');
-    }
+	/**
+	 * Display the specified resource.
+	 */
+	public function show(string $id)
+	{
+		return view('password.show');
+	}
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        // 
-    }
+	/**
+	 * Show the form for editing the specified resource.
+	 */
+	public function edit(string $id)
+	{
+		return view('password.edit');
+	}
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        // 
-    }
+	/**
+	 * Update the specified resource in storage.
+	 */
+	public function update(Request $request, string $id)
+	{
+		// 
+	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 */
+	public function destroy(string $id)
+	{
+		// 
+	}
 }

@@ -3,7 +3,8 @@
 @section('content')
 
 <div class="container">
-  <form>
+  <form action="{{ route('password.store') }}" method="post">
+    @csrf
     <div class="mb-3">
       <label for="title" class="form-label">タイトル</label>
       <input type="text" class="form-control" id="title" name="title">
