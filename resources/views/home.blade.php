@@ -2,35 +2,25 @@
 
 @section('content')
 
-  <div class="container">
-		<table class="table table-borderd">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>説明</th>
-					<th>アカウント</th>
-					<th>メールアドレス</th>
-					<th>パスワード</th>
-					<th>メモ</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>1</td>
-					<td>Gmail</td>
-					<td>aaaa</td>
-					<td>aaa@gmail.com</td>
-					<td>最初のGmail</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>Microsoft</td>
-					<td>bbbb</td>
-					<td>bbb@outlook.com</td>
-					<td>最初のWindowsメール</td>
-				</tr>
-			</tbody>
-		</table>
+<div class="container mt-4">
+  <h3>HOME</h3>
+</div>
+
+<div class="container">
+	<div class="d-flex justify-content-center">
+  	<img src="{{ asset('img/home_img.jpg') }}">
 	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="d-flex justify-content-center">
+			<button class="m-3 py-3 px-5 btn-dark"><a href="{{ route('password.index') }}" class="text-decoration-none text-light">検索</a></button>
+			<button class="m-3 py-3 px-5 btn-dark"><a href="{{ route('password.create') }}" class="text-decoration-none text-light">生成</a></button>
+			<button class="m-3 py-3 px-5 btn-dark"><a href="{{ route('password.entry') }}" class="text-decoration-none text-light">登録</a></button>
+			<button class="m-3 py-3 px-5 btn-dark"><a href="{{ route('login') }}" class="text-decoration-none text-light">ログイン</a></button>
+		</div>
+	</div>
+</div>
 
 @endsection

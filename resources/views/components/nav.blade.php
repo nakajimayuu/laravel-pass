@@ -7,10 +7,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('home') }}">検索</a>
+          <a class="nav-link" href="{{ route('password.index') }}">検索</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ route('password.create') }}">生成</a>
