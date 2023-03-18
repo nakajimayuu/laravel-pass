@@ -12,9 +12,24 @@ class PasswordController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 */
-	public function index()
+	public function index(Request $request)
 	{
-		return view('password.index');
+		// $passwords = Password::all();
+
+		$keyword = $request->input('keyword');
+		$query = Password::query();
+
+		if(!empty($keyword)) {
+			$query->where('title', 'LIKE', "%{$keyword}%")
+						->orWhere('account', 'LIKE', "%{$keyword}%")
+						->orWhere('email', 'LIKE', "%{$keyword}%")
+						->orWhere('password', 'LIKE', "%{$keyword}%")
+						->orWhere('memo', 'LIKE', "%{$keyword}%");
+		}
+
+		$passwords = $query->get();
+
+		return view('password.index', compact('passwords', 'keyword'));
 	}
 
 	/**
