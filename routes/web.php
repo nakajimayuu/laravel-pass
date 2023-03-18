@@ -20,6 +20,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/entry', [Controllers\PasswordController::class, 'entry'])->name('password.entry');
+Route::get('/search', [Controllers\PasswordController::class, 'index'])->name('search');
 
 Route::resource('password', PasswordController::class);
 
