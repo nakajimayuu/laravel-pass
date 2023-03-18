@@ -10,7 +10,7 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('home') }}">検索</a>
+          <a class="nav-link" href="{{ route('search') }}">検索</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ route('password.create') }}">生成</a>
