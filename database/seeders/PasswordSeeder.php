@@ -13,6 +13,8 @@ class PasswordSeeder extends Seeder
    */
   public function run(): void
   {
+    Password::truncate();
+    // DB::table($tableName)->truncate();
     Password::create([
       'id' => '1',
       'title' => 'Gmail',
