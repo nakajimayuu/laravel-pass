@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Password;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PasswordController extends Controller
 {
@@ -20,11 +21,16 @@ class PasswordController extends Controller
 		$query = Password::query();
 
 		if(!empty($keyword)) {
-			$query->where('title', 'LIKE', "%{$keyword}%")
-						->orWhere('account', 'LIKE', "%{$keyword}%")
-						->orWhere('email', 'LIKE', "%{$keyword}%")
-						->orWhere('password', 'LIKE', "%{$keyword}%")
-						->orWhere('memo', 'LIKE', "%{$keyword}%");
+			$query->where('user_id', Auth::id())->where(function ($q) use ($keyword) {
+				$q->Where('title', 'LIKE', "%{$keyword}%")
+				->orWhere('account', 'LIKE', "%{$keyword}%")
+				->orWhere('email', 'LIKE', "%{$keyword}%")
+				->orWhere('password', 'LIKE', "%{$keyword}%")
+				->orWhere('memo', 'LIKE', "%{$keyword}%");
+
+			});
+		}else{
+			$query->where('user_id', Auth::id())->whereNotNull('user_id');
 		}
 
 		$passwords = $query->get();
@@ -42,7 +48,9 @@ class PasswordController extends Controller
 
 	public function entry(Request $request)
 	{
-		return view('password.entry');
+		// dd(request()->input('pass'));
+		$password = request()->input('pass');
+		return view('password.entry', compact('password'));
 	}
 
 	/**
@@ -55,6 +63,7 @@ class PasswordController extends Controller
 
 		try {
 			$password = new Password();
+			$password->user_id  = Auth::id();
 			$password->title    = $request->input('title');
 			$password->account  = $request->input('account');
 			$password->password = $request->input('password');
