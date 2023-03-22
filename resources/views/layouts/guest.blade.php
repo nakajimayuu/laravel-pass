@@ -14,7 +14,6 @@
   <x-nav />
 
   @yield('content')
-  <p>ggggggggggggggggggg</p>
 
   @vite('resources/js/app.js')
 
