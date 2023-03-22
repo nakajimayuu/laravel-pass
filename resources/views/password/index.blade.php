@@ -24,6 +24,7 @@
     <thead>
       <tr>
         <th>ID</th>
+        <th>ユーザー</th>
         <th>説明</th>
         <th>アカウント</th>
         <th>メールアドレス</th>
@@ -35,6 +36,7 @@
       @forelse ($passwords as $password)
         <tr>
           <td>{{ $password->id }}</td>
+          <td>{{ $password->user_id}}</td>
           <td>{{ $password->title }}</td>
           <td>{{ $password->account }}</td>
           <td>{{ $password->email }}</td>

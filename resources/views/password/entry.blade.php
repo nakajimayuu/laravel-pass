@@ -15,7 +15,13 @@
     </div>
     <div class="mb-3">
       <label for="password" class="form-label">パスワード</label>
-      <input type="text" class="form-control" id="password" name="password">
+      <input
+        type="text"
+        class="form-control"
+        id="password"
+        name="password"
+        value="{{ $password }}"
+      >
     </div>
     <div class="mb-3">
       <label for="email" class="form-label">メールアドレス</label>
