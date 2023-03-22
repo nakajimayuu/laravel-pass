@@ -7,3 +7,11 @@
 }
 @include media-breakpoint-down(md) {
 }
+
+.condition {
+  display: inline-grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.condition > div {
+  margin: 0.5rem;
+}
